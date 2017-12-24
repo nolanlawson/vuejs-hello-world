@@ -4,9 +4,14 @@ import router from './router'
 
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  render: h => h(App)
+Promise.all([
+  typeof IntersectionObserver === 'undefined' && import(/* webpackChunkName: "IntersectionObserver" */ 'intersection-observer'),
+  typeof requestIdleCallback === 'undefined' && import(/* webpackChunkName: "requestIdleCallback" */ 'request-idle-callback')
+]).then(() => {
+  /* eslint-disable no-new */
+  new Vue({
+    el: '#app',
+    router,
+    render: h => h(App)
+  })
 })
