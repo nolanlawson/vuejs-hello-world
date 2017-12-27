@@ -7,22 +7,24 @@ const ThirdComponent = () => import(/* webpackChunkName: 'ThirdComponent' */ '..
 
 Vue.use(Router)
 
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    },
-    {
-      path: '/second',
-      name: 'SecondComponent',
-      component: SecondComponent
-    },
-    {
-      path: '/third',
-      name: 'ThirdComponent',
-      component: ThirdComponent
-    }
-  ]
-})
+export function createRouter () {
+  return new Router({
+    routes: [
+      {
+        path: '/',
+        name: 'HelloWorld',
+        component: HelloWorld
+      },
+      {
+        path: '/second',
+        name: 'SecondComponent',
+        component: SecondComponent
+      },
+      {
+        path: '/third',
+        name: 'ThirdComponent',
+        component: ThirdComponent
+      }
+    ]
+  })
+}
